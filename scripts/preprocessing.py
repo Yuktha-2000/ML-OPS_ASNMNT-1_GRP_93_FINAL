@@ -2,7 +2,7 @@ import pandas as pd
 from sklearn.preprocessing import OneHotEncoder, StandardScaler, OrdinalEncoder
 from sklearn.compose import ColumnTransformer
 from sklearn.model_selection import train_test_split
-
+import joblib
 def load_data(filepath):
     return pd.read_csv(filepath)
 
@@ -54,4 +54,9 @@ def preprocess_data(df, cat_cols, scale_cols, ordinal_cols, reputation_order, tr
 
 
 def split_data(X, y):
-    return train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)
+    return train_test_split(X, y, test_size=0.50, random_state=42, stratify=y)
+
+def save_best_model(model, filepath):
+    """Save the best-performing model to a file."""
+    joblib.dump(model, filepath)
+    print(f"Model saved to {filepath}")
