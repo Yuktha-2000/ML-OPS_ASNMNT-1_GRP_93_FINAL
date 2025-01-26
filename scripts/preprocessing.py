@@ -54,7 +54,7 @@ def preprocess_data(df, cat_cols, scale_cols, ordinal_cols, reputation_order, tr
 
 
 def split_data(X, y):
-    return train_test_split(X, y, test_size=0.50, random_state=42, stratify=y)
+    return train_test_split(X, y, test_size=0.5, random_state=42, stratify=y)
 
 def save_best_model(model, filepath):
     """Save the best-performing model to a file."""

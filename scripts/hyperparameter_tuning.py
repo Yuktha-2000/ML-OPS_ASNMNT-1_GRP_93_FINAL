@@ -21,10 +21,6 @@ def ada_boost_tuning(x_train, y_train, x_test, y_test):
     param_grid = {
         'n_estimators': [50, 100, 200],  # Number of boosting stages
         'learning_rate': [0.01, 0.1, 0.5, 1.0],  # Step size for each boosting stage
-        'estimator': [DecisionTreeClassifier(max_depth=1),  # Shallow tree as the base estimator
-                      None],  # Default is DecisionTreeClassifier
-        'algorithm': ['SAMME', 'SAMME.R'],  # Boosting algorithm choice
-        'random_state': [42]  # For reproducibility (optional)
     }
     grid_search = GridSearchCV(
         AdaBoostClassifier(random_state=42),
@@ -37,3 +33,4 @@ def ada_boost_tuning(x_train, y_train, x_test, y_test):
     y_pred = best_model.predict(x_test)
     print(f"Best Parameters: {grid_search.best_params_}")
     print_performance_metrics(y_test, y_pred, 'AdaBoost (Tuned)')
+    return best_model

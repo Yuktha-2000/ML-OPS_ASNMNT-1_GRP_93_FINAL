@@ -1,12 +1,13 @@
 from flask import Flask, request, jsonify
 import joblib
 import numpy as np
+import joblib
 
 app = Flask(__name__)
 
 # Load the model
-with open('models/best_model.pkl', 'rb') as f:
-    model = joblib.load(f)
+
+model = joblib.load('models/best_model.joblib')
 
 @app.route('/predict', methods=['POST'])
 def predict():
@@ -26,5 +27,5 @@ def predict():
         return jsonify({"error": str(e)}), 500
 
 
-def run_app():
-    app.run(debug=True)
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000)  # Run the Flask app

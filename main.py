@@ -16,4 +16,4 @@ if __name__ == "__main__":
         best_model = ada_boost_tuning(x_train, y_train, x_test, y_test)
 
         # Save the best model
-        save_best_model(best_model, "models/best_model.pkl")
+        save_best_model(best_model, "models/best_model.joblib")
