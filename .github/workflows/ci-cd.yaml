@@ -35,6 +35,9 @@ jobs:
       run: |
         pytest pytest_test.py
 
-   
+    - name: Deploy
+      run: |
+        echo "Deploying application"
+        nohup python main.py deploy &
 
   
